@@ -3,7 +3,7 @@ const load = () => {
     const input = document.querySelector('.form input')
     const form = document.querySelector('.form')
     const socket = io.connect(
-        process.env.NEXT_PUBLIC_VERCEL_URL,
+        "https://vercel-khaki-kappa.vercel.app",
         {
             path: "/"
         }
