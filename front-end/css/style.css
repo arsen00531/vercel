@@ -12,9 +12,10 @@ a {
 }
 
 header a {
-    margin-top: 0;
     position: fixed;
     right: 30px;
+    top: 0;
+    z-index: 10;
 }
 
 h1 {
@@ -148,7 +149,7 @@ a {
 
 @media (max-width: 400px) {
     input {
-        margin-right: 0;
-        width: 75%;
+        margin: 20px auto;
+        width: 70%;
     }
 }
