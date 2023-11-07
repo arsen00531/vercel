@@ -4,6 +4,7 @@ const load = () => {
     const form = document.querySelector('.form')
     const socket = io.connect();
     const name = atob(document.cookie.split('=')[1].split('.')[1])
+    const body = document.querySelector('body')
 
     socket.on('add mess', data => {
         const message = document.createElement('div')
@@ -17,7 +18,7 @@ const load = () => {
         message.append(time)
         message.append(p)
         window.scrollTo({
-            top: window.innerHeight,
+            top: body.scrollHeight,
             behavior: 'smooth'
         })
     })
@@ -27,7 +28,7 @@ const load = () => {
 
         if (input.value === '') return
         
-        socket.emit('send mess', {mess: input.value, name})
+        socket.emit('send mess', {mess: input.value, name, time: new Date().toLocaleTimeString()})
         input.value = ''
     })
 

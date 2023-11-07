@@ -98,9 +98,9 @@ io.sockets.on('connection', (socket) => {
     });
 
     socket.on('send mess', async (data) => {
-        await db.query("INSERT INTO chat (name, text, time) VALUES ($1, $2, '12:45')", [data.name, data.mess]);
+        await db.query("INSERT INTO chat (name, text, time) VALUES ($1, $2, $3)", [data.name, data.mess, data.time]);
 
-        io.sockets.emit('add mess', {mess: data.mess, name: data.name, time: '12:45'});
+        io.sockets.emit('add mess', {mess: data.mess, name: data.name, time: data.time});
     });
 });
 

@@ -13,7 +13,8 @@ a {
 
 header a {
     margin-top: 0;
-    float: right;
+    position: fixed;
+    right: 0;
 }
 
 h1 {
