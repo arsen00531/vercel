@@ -1,1 +1,1 @@
-module.exports = process.env.PG_URL || process.env.URL
+module.exports = "vercel-khaki-kappa.vercel.app/"
