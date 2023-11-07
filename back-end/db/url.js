@@ -1,1 +1,1 @@
-module.exports = "vercel-khaki-kappa.vercel.app/"
+module.exports = "/"
