@@ -2,8 +2,7 @@ const load = () => {
     const messageContainer = document.querySelector('.messages')
     const input = document.querySelector('.form input')
     const form = document.querySelector('.form')
-    const { io } = require("socket.io-client");
-    const socket = io();
+    const socket = io.connect();
     const name = atob(document.cookie.split('=')[1].split('.')[1])
 
     socket.on('add mess', data => {
