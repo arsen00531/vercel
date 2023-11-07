@@ -58,7 +58,7 @@ app.post('/reg', async (req, res) => {
     if (row.length != 0) return res.redirect(url + 'reg')
 
     await db.query("INSERT INTO users (name, password) VALUES ($1, $2)", [name, password] )
-    res.redirect('http://localhost:3000/login')
+    res.redirect(url + 'login')
 })
 
 app.post('/login', async (req, res) => {
