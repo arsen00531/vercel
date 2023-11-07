@@ -22,7 +22,7 @@
             <div class="
                 message <% if (mess.name == decoded) { %> out<% } else { %> in<% } %>
             ">
-                <div><%= mess.time %>> <%= mess.name %></div>
+                <div><%= mess.time %> <%= mess.name %></div>
                 <p><%= mess.text %></p>
             </div>
         <% }) %>
