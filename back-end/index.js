@@ -21,20 +21,22 @@ app.use(cookieParser());
 app.engine('html', require('ejs').renderFile);
 
 app.get('/', (req, res) => {
-    const cookies = req.headers.cookie
-    if (!cookies) return res.redirect(url + 'login')
-    cookies.split(';').forEach(async (cookie) => {
-        const decoded = jwt.decode(cookie.split('=')[1])
-        if (decoded) {
-            const row = (await db.query('SELECT * FROM chat')).rows
-            res.render(path.join('pages', 'index.ejs'), {decoded, row})
-        }
-    })
+    try {
+        const cookies = req.headers.cookie
+        if (!cookies) return res.redirect(url + 'login')
+        cookies.split(';').forEach(async (cookie) => {
+            const decoded = jwt.decode(cookie.split('=')[1])
+            if (decoded) {
+                const row = (await db.query('SELECT * FROM chat')).rows
+                res.render(path.join('pages', 'index.ejs'), {decoded, row})
+            }
+        })
+    } catch (err) {
+        console.log(err)
+    }
 })
 
-app.get('/login', async (req, res) => {
-    const l = await db.query('SELECT * FROM users')
-    console.log(l)
+app.get('/login', (req, res) => {
     res.render(path.join('pages', 'login.html'))
 })
 
@@ -53,27 +55,35 @@ app.get('/logout', (req, res) => {
 })
 
 app.post('/reg', async (req, res) => {
-    const name = req.body.name
-    const password = req.body.password
-    const row = (await db.query("SELECT id FROM users WHERE name = $1", [name])).rows
+    try {
+        const name = req.body.name
+        const password = req.body.password
+        const row = (await db.query("SELECT id FROM users WHERE name = $1", [name])).rows
 
-    if (row.length != 0) return res.redirect(url + 'reg')
+        if (row.length != 0) return res.redirect(url + 'reg')
 
-    await db.query("INSERT INTO users (name, password) VALUES ($1, $2)", [name, password] )
-    res.redirect(url + 'login')
+        await db.query("INSERT INTO users (name, password) VALUES ($1, $2)", [name, password] )
+        res.redirect(url + 'login')
+    } catch(err) {
+        console.error(err);
+    }
 })
 
 app.post('/login', async (req, res) => {
-    const name = req.body.name
-    const password = req.body.password
-    const user = (await db.query("SELECT * FROM users WHERE name = $1", [name])).rows
-    
-    if (user.length === 0) return res.redirect(url + 'login')
-    if (user[0].password != password) return res.redirect(url + 'login')
+    try {
+        const name = req.body.name
+        const password = req.body.password
+        const user = (await db.query("SELECT * FROM users WHERE name = $1", [name])).rows
+        
+        if (user.length === 0) return res.redirect(url + 'login')
+        if (user[0].password != password) return res.redirect(url + 'login')
 
-    const token = jwt.sign(name, 'shhhh')
-    res.cookie(user[0].id, token)
-    res.redirect(url)
+        const token = jwt.sign(name, 'shhhh')
+        res.cookie(user[0].id, token)
+        res.redirect(url)
+    } catch (err) {
+        console.error(err);
+    }
 })
 
 const connections = []
