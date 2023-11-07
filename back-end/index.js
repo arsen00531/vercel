@@ -32,7 +32,9 @@ app.get('/', (req, res) => {
     })
 })
 
-app.get('/login', (req, res) => {
+app.get('/login', async (req, res) => {
+    const l = await db.query('SELECT * FROM users')
+    console.log(l)
     res.render(path.join('pages', 'login.html'))
 })
 
