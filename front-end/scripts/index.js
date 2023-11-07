@@ -3,7 +3,7 @@ const load = () => {
     const input = document.querySelector('.form input')
     const form = document.querySelector('.form')
     const socket = io.connect(
-        "https://vercel-khaki-kappa.vercel.app/",
+        "https://vercel-git-main-arsen00531.vercel.app/",
     );
     const name = atob(document.cookie.split('=')[1].split('.')[1])
 
