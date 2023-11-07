@@ -1,0 +1,153 @@
+body {
+    font-family: Tahoma;
+    font-size: 14px;
+    border-collapse: collapse;
+    padding: 10px;
+    overflow-x: hidden;
+}
+
+a {
+    font-size: 22px;
+    margin-top: 50px;
+}
+
+header a {
+    margin-top: 0;
+    float: right;
+}
+
+h1 {
+    font-size: 30px;
+    text-align: center;
+}
+
+p {
+    word-wrap: break-word;
+    line-height: 20px;
+}
+
+.date {
+    padding: 3px;
+    background-color: #B3F9D1;
+    border: 2px solid  #0BDF02;
+    border-radius: 5px;
+    position: fixed;
+    left: 50%;
+    top: 50px;
+    margin-left: -74px;
+    z-index: 10;
+}
+
+.messages {
+    margin-bottom: 200px;
+}
+
+.message {
+    padding: 3px;
+    background-color: #F9FDCE;
+    border: 2px solid #FCF594;
+    margin: 18px;
+    border-radius: 5px;
+}
+
+.message:first-child {
+    margin-top: 55px;
+}
+
+.message div {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.in {
+    position: relative;
+    margin-left: 20px;
+    margin-right: 100px;
+}
+
+.in::before, .in::after {
+    content: ''; 
+    position: absolute;
+    left: -70px;
+    top: 8px;
+    border: 10px solid transparent;
+    border-right: 10px solid #FCF594;
+    width: 50px;
+}
+
+.in::after {
+    border-right: 10px solid #F9FDCE;
+    left: -68px;
+}    
+
+.out {
+    position: relative;
+    margin-left: 100px;
+    margin-right: 20px;
+    background-color: #BAF9F2;
+    border-color: #6BEBFB;
+}
+
+.out::before, .out::after {
+    content: ''; 
+    position: absolute;
+    right: -70px;
+    top: 8px;
+    border: 10px solid transparent;
+    border-left: 10px solid #6BEBFB;
+    width: 50px;
+}
+
+.out::after {
+    border-left: 10px solid #BAF9F2;
+    right: -68px;
+}
+
+.form {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    background-color: #fff;
+}
+
+input, button {
+    outline: none;
+    border: 1px solid rgb(38, 139, 144);
+    padding: 10px 15px;
+    font-size: 25px;
+    border-radius: 7px;
+}
+
+input {
+    margin: 20px;
+}
+
+button {
+    margin-bottom: 40px;
+}
+
+.log-reg {
+    text-align: center;
+}
+
+.error {
+    color: red;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@media (max-width: 400px) {
+    input {
+        margin-right: 0;
+        width: 75%;
+    }
+}

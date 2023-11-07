@@ -1,0 +1,1 @@
+module.exports = process.env.PG_URL || process.env.URL

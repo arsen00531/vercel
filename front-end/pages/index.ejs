@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>XHTML</title>
+    <link rel="stylesheet" href="../css/reset.css"/>
+    <link rel="stylesheet" href="../css/style.css"/>
+</head>
+<body>
+    <header>
+        <h1>Диалоги пользователей</h1>
+        <a href="/logout">Выйти</a>
+    </header>
+
+    <div class="date">
+        <p>12 октября 2023 года</p>
+    </div>
+
+    <section class="messages">
+        <% row.forEach((mess) => { %>
+            <div class="
+                message <% if (mess.name == decoded) { %> out<% } else { %> in<% } %>
+            ">
+                <div>12:45 <%= mess.name %></div>
+                <p><%= mess.text %></p>
+            </div>
+        <% }) %>
+        
+    </section>
+
+    <form class="form">
+        <input type="text" name="text" placeholder="Type your text">
+        <button type="submit">Отправить</button>
+    </form>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="scripts/index.js"></script>
+</body>
+</html>
