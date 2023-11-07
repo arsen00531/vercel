@@ -13,8 +13,8 @@ const url = require('./db/url')
 const PORT = process.env.PORT || 3000
 
 app.set("view options", {layout: false});
-app.set('views', path.join(__dirname, 'front-end'));
-app.use(express.static(path.join(__dirname, 'front-end')));
+app.set('views', path.join(__dirname, '../', 'front-end'));
+app.use(express.static(path.join(__dirname, '../', 'front-end')));
 app.use(bodyParser.urlencoded({extend:false}));
 app.use(bodyParser.json());
 app.use(cookieParser());
